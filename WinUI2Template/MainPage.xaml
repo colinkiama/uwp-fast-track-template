@@ -17,24 +17,22 @@
                          BackRequested="NavView_BackRequested">
             <muxc:NavigationView.HeaderTemplate>
                 <DataTemplate>
-                    <ContentControl Content="{Binding}" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding}" VerticalAlignment="Top"/>
                 </DataTemplate>
             </muxc:NavigationView.HeaderTemplate>
+            
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Content="Home" Tag="home" Icon="Home" />
                 <muxc:NavigationViewItemSeparator/>
                 <muxc:NavigationViewItemHeader x:Name="MainPagesHeader"
-                                           Content="Main pages"/>
-                <muxc:NavigationViewItem Tag="page1" Content="Page 1">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB3C;"/>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
+                                           Content="Pages"/>
+                <muxc:NavigationViewItem Tag="page1" Content="Page 1" Icon="Page2"/>
             </muxc:NavigationView.MenuItems>
 
             <muxc:NavigationView.AutoSuggestBox>
                 <!-- See AutoSuggestBox documentation for
-                 more info about how to implement search. -->
+                 more info about how to implement search: 
+                https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/auto-suggest-box -->
                 <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
             </muxc:NavigationView.AutoSuggestBox>
             <ScrollViewer>
@@ -50,10 +48,11 @@
                         MinWindowWidth="{x:Bind NavViewCompactModeThresholdWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Remove the next 3 lines for left-only navigation. -->
-                        <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
-                        <Setter Target="NavViewSearchBox.Width" Value="200"/>
-                        <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>
+                        <!-- Add the next 3 lines for Top navigaton navigation. -->
+                        <!--<Setter Target="NavView.PaneDisplayMode" Value="Top"/>-->
+                        <!--<Setter Target="NavViewSearchBox.Width" Value="200"/>-->
+                        <!--<Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>-->
+                        
                         <!-- Leave the next line for left-only navigation. -->
                         <Setter Target="ContentFrame.Padding" Value="24,0,24,24"/>
                     </VisualState.Setters>

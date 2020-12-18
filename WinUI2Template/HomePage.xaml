@@ -9,6 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.Resources>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="ms-appx:///Assets/WinUILogo.png"
+                   Width="200"
+                   Height="200"
+                   />
+            <TextBlock Text="Welcome to WinUI 2!" />
+            <TextBlock>You can edit this text in <Bold>HomePage.xaml</Bold></TextBlock>
+            <HyperlinkButton Content="Find out more about WinUI here" HorizontalAlignment="Center" 
+                             NavigateUri="https://docs.microsoft.com/en-us/windows/apps/winui/winui2/"
+                             />
+        </StackPanel>
     </Grid>
 </Page>
