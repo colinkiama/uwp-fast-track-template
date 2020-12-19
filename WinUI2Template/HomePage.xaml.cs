@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using UWPFastTrackTemplate.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,15 +20,11 @@ namespace $safeprojectname$
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SettingsView : Page
+    public sealed partial class HomePage : Page
     {
-        public SettingsView()
+        public HomePage()
         {
             this.InitializeComponent();
-            this.DataContext = App.Services.GetRequiredService<SettingsViewModel>();
-
         }
-
-        SettingsViewModel ViewModel => (SettingsViewModel)this.DataContext;
     }
 }
