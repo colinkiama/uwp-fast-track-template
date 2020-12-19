@@ -17,7 +17,7 @@ This template is a UWP app with WinUI 2.4 installed and ready to use.
 
 ## Branches
 | Branch Name | Description |
-|------------------------- |
+|-------------|----------- |
 | master | Changes from the `runnable` branch used in the latest production release. |
 | runnable | A runnable version of the template that will be exported in the `dev` branch. |
 | dev | Takes the changes from the `runnable` branch and replaces the names with template parameters.|
