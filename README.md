@@ -1,11 +1,17 @@
 # WinUI2Template
 A UWP project template that let's developers get started with WinUI 2 quickly!
 
+Available in Visual Studio Marketplace: https://marketplace.visualstudio.com/items?itemName=ColinKiama.winui-2-template
+
 ![WinUI2 Template Screenshot](img/WinUI2Template.png)
 
-## Note
-It's not finished yet 😥
+## Using the template from the repo
+The template code is in the 'dev' branch.  
+From there, you can export the project as a template. (Visual Studio Menu Bar: Project > Export Template)
 
-However, you can still clone the solution and rename the project and namespace names if you don't mind its current state.
+Further instructions on how to export templates are here: https://docs.microsoft.com/en-us/visualstudio/ide/how-to-create-project-templates?view=vs-2019#use-the-export-template-wizard
 
-👋 
+## VSIX
+VSIX package project repo: https://github.com/colinkiama/WinUI2TemplateVSIX
+
+In the future, the package project will exist in the same repo as this one.
