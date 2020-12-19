@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="4a6c1294-82e2-49d7-b49c-c11bc66b7031" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>WinUI2Template</DisplayName>
+    <DisplayName>$safeprojectname$</DisplayName>
     <PublisherDisplayName>colin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,9 +30,9 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="WinUI2Template.App">
+      EntryPoint="$safeprojectname$.App">
       <uap:VisualElements
-        DisplayName="WinUI 2 Template"
+        DisplayName="$projectname$"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="WinUI 2 Template"
