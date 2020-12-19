@@ -7,13 +7,20 @@ You can also select "Use this template" and rename namespaces and files yourself
 
 ![WinUI2 Template Screenshot](img/WinUI2Template.png)
 
-## Directly installing the template to Visual Studio
-The template code is in the 'dev' branch.  
-From there, you can export the project as a template. (Visual Studio Menu Bar: Project > Export Template)
+## Template Structure
+This template is a UWP app with WinUI 2.4 installed and ready to use.
 
-Further instructions on how to export templates are here: https://docs.microsoft.com/en-us/visualstudio/ide/how-to-create-project-templates?view=vs-2019#use-the-export-template-wizard
+- MainPage (Where a NavigationView for the whole app exists)
+- HomePage (The first page displayed in the navigation view)
+- Page1 (A secondary page that used to show how you can navigate between pages)
+- SettingsPage (Shows when you select the settings item on the NavigationView)
 
-## VSIX
-VSIX package project repo: https://github.com/colinkiama/WinUI2TemplateVSIX
+## Branches
+| Branch Name | Description |
+|------------------------- |
+| master | Changes from the `runnable` branch used in the latest production release. |
+| runnable | A runnable version of the template that will be exported in the `dev` branch. |
+| dev | Takes the changes from the `runnable` branch and replaces the names with template parameters.|
 
-In the future, the package project will exist in the same repo as this one.
+## Making your own templates
+Learn how to make your own templates here (It can save you a lot of time!): https://docs.microsoft.com/en-us/visualstudio/extensibility/creating-custom-project-and-item-templates?view=vs-2019
