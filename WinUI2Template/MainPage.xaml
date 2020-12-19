@@ -48,7 +48,7 @@
                         MinWindowWidth="{x:Bind NavViewCompactModeThresholdWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Add the next 3 lines for Top navigaton navigation. -->
+                        <!-- Add the next 3 lines for Top navigation. -->
                         <!--<Setter Target="NavView.PaneDisplayMode" Value="Top"/>-->
                         <!--<Setter Target="NavViewSearchBox.Width" Value="200"/>-->
                         <!--<Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>-->

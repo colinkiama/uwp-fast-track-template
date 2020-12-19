@@ -16,15 +16,13 @@ namespace $safeprojectname$
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private double NavViewCompactModeThresholdWidth { get { return NavView.CompactModeThresholdWidth; } }
+
         public MainPage()
         {
             this.InitializeComponent();
         }
 
-        // Add "using" for WinUI controls.
-        // using muxc = Microsoft.UI.Xaml.Controls;
-
-        private double NavViewCompactModeThresholdWidth { get { return NavView.CompactModeThresholdWidth; } }
 
         private void ContentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
@@ -33,15 +31,13 @@ namespace $safeprojectname$
 
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
-{
-    ("home", typeof(HomePage)),
-    ("page1", typeof(Page1)),
-};
+        {
+            ("home", typeof(HomePage)),
+            ("page1", typeof(Page1)),
+        };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-           
-
             // Add handler for ContentFrame navigation.
             ContentFrame.Navigated += On_Navigated;
 
