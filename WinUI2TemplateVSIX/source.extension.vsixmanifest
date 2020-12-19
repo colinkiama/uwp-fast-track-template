@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="WinUI 2 template - 1" Version="1.0" Language="en-US" Publisher="Colin Kiama" />
+        <Identity Id="WinUI 2 template - 1" Version="1.1" Language="en-US" Publisher="Colin Kiama" />
         <DisplayName>WinUI 2 Template</DisplayName>
         <Description xml:space="preserve">A UWP project template that allows developers to get started with WinUI 2 quickly</Description>
         <MoreInfo>https://github.com/colinkiama/WinUI2Template</MoreInfo>

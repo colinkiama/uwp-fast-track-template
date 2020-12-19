@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUI2Template", "WinUI2Template\WinUI2Template.csproj", "{8DB1310D-0958-4FD8-90D4-DC6BA7CBF14C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUI2TemplateVSIX", "..\WinUI2TemplateVSIX\WinUI2TemplateVSIX\WinUI2TemplateVSIX.csproj", "{93992F9E-62D4-4CFC-86A5-734286E47972}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUI2TemplateVSIX", "WinUI2TemplateVSIX\WinUI2TemplateVSIX.csproj", "{93992F9E-62D4-4CFC-86A5-734286E47972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
