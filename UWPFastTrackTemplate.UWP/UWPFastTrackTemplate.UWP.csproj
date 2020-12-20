@@ -251,6 +251,12 @@
       <SubType>Designer</SubType>
     </PRIResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UWPFastTrackTemplate\UWPFastTrackTemplate.csproj">
+      <Project>{ed4c557d-26c1-4c79-8cae-14255496b57a}</Project>
+      <Name>UWPFastTrackTemplate</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

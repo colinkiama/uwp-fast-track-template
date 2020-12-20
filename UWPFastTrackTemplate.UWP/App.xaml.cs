@@ -4,14 +4,24 @@ using UWPFastTrackTemplate.Services;
 using UWPFastTrackTemplate.UWP.Services;
 using UWPFastTrackTemplate.UWP.View;
 using UWPFastTrackTemplate.ViewModel;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WinUI2Template.Model;
 
-namespace UWPFastTrackTemplate.UWP
+namespace $safeprojectname$
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -124,17 +134,17 @@ namespace UWPFastTrackTemplate.UWP
             }
 
 
-            if (rootFrame.Content == null)
-            {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
+                if (rootFrame.Content == null)
+                {
+                    // When the navigation stack isn't restored navigate to the first page,
+                    // configuring the new page by passing required information as a navigation
+                    // parameter
                 var navService = Services.GetRequiredService<NavigationService>();
                 navService.Navigate<MainViewModel>(new NavigationInfo(args, null));
+                }
+                // Ensure the current window is active
+                Window.Current.Activate();
             }
-            // Ensure the current window is active
-            Window.Current.Activate();
-        }
 
         private void TryEnablePrelaunch()
         {
