@@ -2,6 +2,7 @@
 using System;
 using UWPFastTrackTemplate.Services;
 using UWPFastTrackTemplate.UWP.Services;
+using UWPFastTrackTemplate.View.UWP;
 using UWPFastTrackTemplate.ViewModel;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -70,10 +71,11 @@ namespace UWPFastTrackTemplate.UWP
                     //TODO: Load state from previously suspended application
                 }
 
-                _serviceProvider = ConfigureServices(rootFrame);
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+                _serviceProvider = ConfigureServices(rootFrame);
             }
 
             if (e.PrelaunchActivated == false)
@@ -83,14 +85,15 @@ namespace UWPFastTrackTemplate.UWP
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    var navService = Services.GetRequiredService<INavigationService>();
+                    navService.Navigate<MainViewModel>(e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
         }
 
-       
+
         protected override void OnActivated(IActivatedEventArgs args)
         {
             Frame rootFrame = Window.Current.Content as Frame;
@@ -117,15 +120,17 @@ namespace UWPFastTrackTemplate.UWP
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), args);
+                var navService = Services.GetRequiredService<NavigationService>();
+                navService.Navigate<MainViewModel>(args);
             }
             // Ensure the current window is active
             Window.Current.Activate();
         }
 
+       
         private void AppStartup()
         {
-            
+
         }
 
 
@@ -160,11 +165,16 @@ namespace UWPFastTrackTemplate.UWP
         {
             //.AddSingleton(new NavigationService(rootFrame))
             return new ServiceCollection()
-                .AddSingleton<INavigationService, NavigationService>((e) => new NavigationService(rootFrame))
+                .AddSingleton<INavigationService, NavigationService>((e) =>
+                {
+                    var navService = new NavigationService(rootFrame);
+                    navService.RegisterForNavigation<MainView, MainViewModel>();
+                    return navService;
+                })
                 .AddSingleton<MainViewModel>()
                 .BuildServiceProvider();
         }
 
-       
+
     }
 }

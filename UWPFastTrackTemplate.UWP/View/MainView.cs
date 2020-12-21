@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using UWPFastTrackTemplate.UWP;
 using UWPFastTrackTemplate.ViewModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -12,16 +13,16 @@ using Windows.UI.Xaml.Navigation;
 using muxc = Microsoft.UI.Xaml.Controls;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace UWPFastTrackTemplate.UWP
+namespace UWPFastTrackTemplate.View.UWP
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainView : Page
     {
         private double NavViewCompactModeThresholdWidth { get { return NavView.CompactModeThresholdWidth; } }
 
-        public MainPage()
+        public MainView()
         {
             this.InitializeComponent();
             this.DataContext = App.Services.GetRequiredService<MainViewModel>();
@@ -36,7 +37,7 @@ namespace UWPFastTrackTemplate.UWP
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
-            ("home", typeof(HomePage)),
+            ("home", typeof(HomeView)),
             ("page1", typeof(Page1)),
         };
 
@@ -95,7 +96,7 @@ namespace UWPFastTrackTemplate.UWP
             Type _page = null;
             if (navItemTag == "settings")
             {
-                _page = typeof(SettingsPage);
+                _page = typeof(SettingsView);
             }
             else
             {
@@ -145,7 +146,7 @@ namespace UWPFastTrackTemplate.UWP
         {
             NavView.IsBackEnabled = ContentFrame.CanGoBack;
 
-            if (ContentFrame.SourcePageType == typeof(SettingsPage))
+            if (ContentFrame.SourcePageType == typeof(SettingsView))
             {
                 // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
                 NavView.SelectedItem = (muxc.NavigationViewItem)NavView.SettingsItem;

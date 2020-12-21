@@ -7,6 +7,7 @@ namespace UWPFastTrackTemplate.Services
     public interface INavigationService
     {
         bool Navigate<TViewModel>();
+        bool Navigate<TViewModel>(object parameter);
         bool GoBack();
     }
 }
