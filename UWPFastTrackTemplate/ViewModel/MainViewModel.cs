@@ -1,10 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using UWPFastTrackTemplate.Services;
 
 namespace UWPFastTrackTemplate.ViewModel
 {
-    class MainViewModel
+    class MainViewModel : NavigatableViewModelBase
     {
+        private string _viewModelName;
+
+        public string ViewModelName
+        {
+            get { return _viewModelName; }
+            set
+            {
+                _viewModelName = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public MainViewModel(INavigationService navigationService) : base(navigationService)
+        {
+        }
+
+
     }
 }
