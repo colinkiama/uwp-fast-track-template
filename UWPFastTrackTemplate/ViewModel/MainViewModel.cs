@@ -48,7 +48,7 @@ namespace UWPFastTrackTemplate.ViewModel
 
         public List<MenuElement> MenuElements { get; set; }
 
-        public MenuElement SettingsElement = new MenuElement { Title = "Title", Icon = "Settings", Tag = "settings" };
+        public MenuElement SettingsElement = new MenuElement { Title = "Settings", Icon = "Settings", Tag = "settings" };
 
         public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -95,6 +95,7 @@ namespace UWPFastTrackTemplate.ViewModel
                         SelectedItem = MenuElements.Where(x => x.Tag == tag).First();
 
                     }
+                    CurrentViewHeader = SelectedItem.Title;
                 }
             }
         }
