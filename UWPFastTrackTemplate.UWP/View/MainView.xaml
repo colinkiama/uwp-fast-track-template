@@ -20,7 +20,7 @@
                          ItemInvoked="NavView_ItemInvoked"
                          Header="{x:Bind ViewModel.CurrentViewHeader, Mode=OneWay}"
                              SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=OneWay}"
-                             MenuItemsSource="{Binding MenuElements}">
+                             MenuItemsSource="{x:Bind ViewModel.MenuElements}">
             <muxc:NavigationView.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" VerticalAlignment="Top"/>
