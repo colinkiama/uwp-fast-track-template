@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UWPFastTrackTemplate.Services;
 using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace WinUI2Template.Services
@@ -12,21 +14,21 @@ namespace WinUI2Template.Services
     public class NavigationService : INavigationService
     {
         public Frame _frame;
+        public event NavigatedEventHandler Navigated;
+        public event NavigatingCancelEventHandler Navigating;
+        public event NavigationFailedEventHandler NavigationFailed;
+        public event NavigationStoppedEventHandler NavigationStopped;
 
         public IDictionary<Type, Type> ViewModelToPageMap { get; } = new Dictionary<Type, Type>();
 
         public NavigationService(Frame navigationFrame)
         {
             _frame = navigationFrame;
-            _frame.Navigated += NavigationFrame_Navigated;
+            _frame.Navigated += _frame_Navigated;
             _frame.PointerPressed += NavigationFrame_PointerPressed;
             SystemNavigationManager.GetForCurrentView().BackRequested += NavService_BackRequested;
         }
 
-        private void NavigationFrame_Navigated(object sender, NavigationEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         public void LoadFrame(Frame frame)
         {
@@ -34,32 +36,37 @@ namespace WinUI2Template.Services
             // new one
             if (_frame != null)
             {
-                _frame.Navigating -= NavigationFrame_Navigating;
-                _frame.Navigated -= NavigationFrame_Navigated;
-                _frame.NavigationFailed -= NavigationFrame_NavigationFailed;
-                _frame.NavigationStopped -= NavigationFrame_NavigationStopped;
+                _frame.Navigating -= _frame_Navigating;
+                _frame.Navigated -= _frame_Navigated;
+                _frame.NavigationFailed -= _frame_NavigationFailed;
+                _frame.NavigationStopped -= _frame_NavigationStopped;
 
             }
             _frame = frame;
-            _frame.Navigated += NavigationFrame_Navigated;
-            _frame.Navigating += NavigationFrame_Navigating;
-            _frame.NavigationFailed += NavigationFrame_NavigationFailed;
-            _frame.NavigationStopped += NavigationFrame_NavigationStopped;
+            _frame.Navigated += _frame_Navigated;
+            _frame.Navigating += _frame_Navigating;
+            _frame.NavigationFailed += _frame_NavigationFailed;
+            _frame.NavigationStopped += _frame_NavigationStopped;
         }
 
-        private void NavigationFrame_NavigationStopped(object sender, NavigationEventArgs e)
+        private void _frame_NavigationStopped(object sender, NavigationEventArgs e)
         {
-            throw new NotImplementedException();
+            NavigationStopped?.Invoke(this, e);
         }
 
-        private void NavigationFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void _frame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            throw new NotImplementedException();
+            NavigationFailed?.Invoke(this, e);
         }
 
-        private void NavigationFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        private void _frame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
-            throw new NotImplementedException();
+            Navigating?.Invoke(this, e);
+        }
+
+        private void _frame_Navigated(object sender, NavigationEventArgs e)
+        {
+            Navigated?.Invoke(this, e);
         }
 
         private void NavigationFrame_PointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
@@ -92,8 +99,43 @@ namespace WinUI2Template.Services
 
         public bool Navigate<TViewModel>()
         {
-            return _frame.Navigate(ViewModelToPageMap[typeof(TViewModel)]);
+            // Try to see if you can navigate to a frame
+            // by going forward first (Saving memory and time)
 
+            Type sourcePageType = ViewModelToPageMap[typeof(TViewModel)];
+            bool didNavigate = false;
+            if (_frame.CanGoForward)
+            {
+                PageStackEntry nextPageInStack = _frame.ForwardStack.First();
+                if (nextPageInStack.SourcePageType == sourcePageType)
+                {
+                    _frame.GoForward();
+                    didNavigate = true;
+                }
+            }
+            if (!didNavigate)
+            {
+                didNavigate = _frame.Navigate(sourcePageType, null, new EntranceNavigationTransitionInfo());
+            }
+            return didNavigate;
+        }
+
+
+        public bool Navigate<TViewModel>(object parameter)
+        {
+            Type sourcePageType = ViewModelToPageMap[typeof(TViewModel)];
+            return _frame.Navigate(sourcePageType, parameter);
+        }
+
+        public bool Navigate<TViewModel>(object parameter, NavigationTransitionInfo infoOverride)
+        {
+            Type sourcePageType = ViewModelToPageMap[typeof(TViewModel)];
+            return _frame.Navigate(sourcePageType, parameter, infoOverride);
+        }
+
+        public bool IsCurrentPageOfType(Type typeQuery)
+        {
+            return _frame.SourcePageType.Equals(typeQuery);
         }
 
         public bool GoBack()
@@ -107,6 +149,5 @@ namespace WinUI2Template.Services
 
             return canGoBack;
         }
-
     }
 }
