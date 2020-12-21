@@ -6,7 +6,6 @@ using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -29,7 +28,7 @@ namespace UWPFastTrackTemplate.UWP.Services
             _frame.PointerPressed += NavigationFrame_PointerPressed;
             SystemNavigationManager.GetForCurrentView().BackRequested += NavService_BackRequested;
             // TODO: Handle "Alt + Left" Back Navigation
-            
+
         }
 
         public void LoadFrame(Frame frame)
@@ -135,6 +134,9 @@ namespace UWPFastTrackTemplate.UWP.Services
             return _frame.Navigate(sourcePageType, parameter, infoOverride);
         }
 
+
+
+
         public bool IsCurrentPageOfType(Type typeQuery)
         {
             return _frame.SourcePageType.Equals(typeQuery);
@@ -150,6 +152,42 @@ namespace UWPFastTrackTemplate.UWP.Services
             }
 
             return canGoBack;
+        }
+
+        public bool Navigate(Type viewModel)
+        {
+            // Try to see if you can navigate to a frame
+            // by going forward first (Saving memory and time)
+
+            Type sourcePageType = ViewModelToViewMap[viewModel];
+            bool didNavigate = false;
+            if (_frame.CanGoForward)
+            {
+                PageStackEntry nextPageInStack = _frame.ForwardStack.First();
+                if (nextPageInStack.SourcePageType == sourcePageType)
+                {
+                    _frame.GoForward();
+                    didNavigate = true;
+                }
+            }
+            if (!didNavigate)
+            {
+                didNavigate = _frame.Navigate(sourcePageType, null, new EntranceNavigationTransitionInfo());
+            }
+            return didNavigate;
+
+        }
+
+        public bool Navigate(Type viewModel, object parameter)
+        {
+            Type sourcePageType = ViewModelToViewMap[viewModel];
+            return _frame.Navigate(sourcePageType, parameter, new EntranceNavigationTransitionInfo());
+        }
+
+        public bool Navigate(Type viewModel, object parameter, NavigationTransitionInfo infoOverride)
+        {
+            Type sourcePageType = ViewModelToViewMap[viewModel];
+            return _frame.Navigate(sourcePageType, parameter, infoOverride);
         }
     }
 }

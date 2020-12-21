@@ -8,6 +8,8 @@ namespace UWPFastTrackTemplate.Services
     {
         bool Navigate<TViewModel>();
         bool Navigate<TViewModel>(object parameter);
+        bool Navigate(Type viewModel);
+        bool Navigate(Type viewModel, object parameter);
         bool GoBack();
     }
 }
