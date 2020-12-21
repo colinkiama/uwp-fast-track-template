@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using UWPFastTrackTemplate.Services;
 
 namespace UWPFastTrackTemplate.ViewModel
 {
-    public abstract class NavigatableViewModelBase: ViewModelBase
+    public abstract class NavigatableViewModelBase : ViewModelBase
     {
-        private INavigationService _navigationService;
-        public NavigatableViewModelBase(INavigationService navigationService) {
+        protected INavigationService _navigationService;
+        public NavigatableViewModelBase(INavigationService navigationService)
+        {
             _navigationService = navigationService;
         }
+
     }
 }

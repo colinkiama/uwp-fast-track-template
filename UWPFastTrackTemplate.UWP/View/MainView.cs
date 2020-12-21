@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using UWPFastTrackTemplate.Services;
 using UWPFastTrackTemplate.UWP;
+using UWPFastTrackTemplate.UWP.Services;
 using UWPFastTrackTemplate.ViewModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -34,12 +36,6 @@ namespace UWPFastTrackTemplate.UWP.View
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
-        private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
-        {
-            ("home", typeof(HomeView)),
-            ("page1", typeof(Page1)),
-        };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -51,22 +47,21 @@ namespace UWPFastTrackTemplate.UWP.View
             // If navigation occurs on SelectionChanged, this isn't needed.
             // Because we use ItemInvoked to navigate, we need to call Navigate
             // here to load the home page.
-            NavView_Navigate("home", new Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo());
 
-            // Add keyboard accelerators for backwards navigation.
-            var goBack = new KeyboardAccelerator { Key = Windows.System.VirtualKey.GoBack };
-            goBack.Invoked += BackInvoked;
-            this.KeyboardAccelerators.Add(goBack);
+            //// Add keyboard accelerators for backwards navigation.
+            //var goBack = new KeyboardAccelerator { Key = Windows.System.VirtualKey.GoBack };
+            //goBack.Invoked += BackInvoked;
+            //this.KeyboardAccelerators.Add(goBack);
 
-            // ALT routes here
-            var altLeft = new KeyboardAccelerator
-            {
-                Key = Windows.System.VirtualKey.Left,
-                Modifiers = Windows.System.VirtualKeyModifiers.Menu
-            };
-            altLeft.Invoked += BackInvoked;
-            this.KeyboardAccelerators.Add(altLeft);
-            SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
+            //// ALT routes here
+            //var altLeft = new KeyboardAccelerator
+            //{
+            //    Key = Windows.System.VirtualKey.Left,
+            //    Modifiers = Windows.System.VirtualKeyModifiers.Menu
+            //};
+            //altLeft.Invoked += BackInvoked;
+            //this.KeyboardAccelerators.Add(altLeft);
+            //SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
             //Debug.WriteLine("ViewModel:", ViewModel.ViewModelName);
         }
 
@@ -78,41 +73,18 @@ namespace UWPFastTrackTemplate.UWP.View
         private void NavView_ItemInvoked(muxc.NavigationView sender,
                                          muxc.NavigationViewItemInvokedEventArgs args)
         {
+            string tag = "";
             if (args.IsSettingsInvoked == true)
             {
-                NavView_Navigate("settings", args.RecommendedNavigationTransitionInfo);
+                tag = "settings";
             }
             else if (args.InvokedItemContainer != null)
             {
-                var navItemTag = args.InvokedItemContainer.Tag.ToString();
-                NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
+                tag = args.InvokedItemContainer.Tag.ToString();
             }
+            ViewModel.HandleNavTag(tag);
         }
 
-        private void NavView_Navigate(
-            string navItemTag,
-            Windows.UI.Xaml.Media.Animation.NavigationTransitionInfo transitionInfo)
-        {
-            Type _page = null;
-            if (navItemTag == "settings")
-            {
-                _page = typeof(SettingsView);
-            }
-            else
-            {
-                var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
-                _page = item.Page;
-            }
-            // Get the page type before navigation so you can prevent duplicate
-            // entries in the backstack.
-            var preNavPageType = ContentFrame.CurrentSourcePageType;
-
-            // Only navigate if the selected page isn't currently loaded.
-            if (!(_page is null) && !Type.Equals(preNavPageType, _page))
-            {
-                ContentFrame.Navigate(_page, null, transitionInfo);
-            }
-        }
 
         private void NavView_BackRequested(muxc.NavigationView sender,
                                            muxc.NavigationViewBackRequestedEventArgs args)
@@ -152,17 +124,23 @@ namespace UWPFastTrackTemplate.UWP.View
                 NavView.SelectedItem = (muxc.NavigationViewItem)NavView.SettingsItem;
                 NavView.Header = "Settings";
             }
-            else if (ContentFrame.SourcePageType != null)
-            {
-                var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
+            //else if (ContentFrame.SourcePageType != null)
+            //{
 
-                NavView.SelectedItem = NavView.MenuItems
-                    .OfType<muxc.NavigationViewItem>()
-                    .First(n => n.Tag.Equals(item.Tag));
+            //    NavView.SelectedItem = NavView.MenuItems
+            //        .OfType<muxc.NavigationViewItem>()
+            //        .First(n => n.Tag.Equals(ViewModel.CurrentTag));
 
-                NavView.Header =
-                    ((muxc.NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
-            }
+            //    NavView.Header =
+            //        ((muxc.NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
+            //}
+        }
+
+        private void ContentFrame_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService navService = (NavigationService)App.Services.GetRequiredService<INavigationService>();
+            navService.LoadFrame(sender as Frame);
+            ViewModel.HandleFrameLoad();
         }
     }
 }
