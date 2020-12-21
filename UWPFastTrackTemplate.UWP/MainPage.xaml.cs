@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using UWPFastTrackTemplate.ViewModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -21,8 +24,10 @@ namespace UWPFastTrackTemplate.UWP
         public MainPage()
         {
             this.InitializeComponent();
+            this.DataContext = App.Services.GetRequiredService<MainViewModel>();
         }
 
+        public MainViewModel ViewModel => (MainViewModel)this.DataContext;
         private void ContentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
@@ -61,6 +66,7 @@ namespace UWPFastTrackTemplate.UWP
             altLeft.Invoked += BackInvoked;
             this.KeyboardAccelerators.Add(altLeft);
             SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
+            //Debug.WriteLine("ViewModel:", ViewModel.ViewModelName);
         }
 
         private void MainPage_BackRequested(object sender, BackRequestedEventArgs e)

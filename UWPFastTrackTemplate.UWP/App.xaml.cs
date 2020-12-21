@@ -70,6 +70,8 @@ namespace UWPFastTrackTemplate.UWP
                     //TODO: Load state from previously suspended application
                 }
 
+                _serviceProvider = ConfigureServices(rootFrame);
+
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
@@ -106,7 +108,7 @@ namespace UWPFastTrackTemplate.UWP
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
 
-                _serviceProvider = ConfigureServices();
+                _serviceProvider = ConfigureServices(rootFrame);
             }
 
 
@@ -154,12 +156,15 @@ namespace UWPFastTrackTemplate.UWP
         /// <summary>
         /// Configures a new <see cref="IServiceProvider"/> instance with the required services.
         /// </summary>
-        private static IServiceProvider ConfigureServices()
+        private static IServiceProvider ConfigureServices(Frame rootFrame)
         {
+            //.AddSingleton(new NavigationService(rootFrame))
             return new ServiceCollection()
-                .AddTransient<INavigationService, NavigationService>()
+                .AddSingleton<INavigationService, NavigationService>((e) => new NavigationService(rootFrame))
                 .AddSingleton<MainViewModel>()
                 .BuildServiceProvider();
         }
+
+       
     }
 }
