@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using UWPFastTrackTemplate.Services;
+using UWPFastTrackTemplate.UWP.Services;
+using UWPFastTrackTemplate.ViewModel;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace WinUI2Template
+namespace UWPFastTrackTemplate.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     sealed partial class App : Application
     {
+        private IServiceProvider _serviceProvider;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -31,6 +26,25 @@ namespace WinUI2Template
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
+
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
+        /// </summary>
+        public static IServiceProvider Services
+        {
+            get
+            {
+                IServiceProvider serviceProvider = ((App)Current)._serviceProvider;
+
+                if (serviceProvider is null)
+                {
+                    throw new InvalidOperationException("The service provider is not initialized");
+                }
+
+                return serviceProvider;
+            }
+        }
+
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -45,6 +59,7 @@ namespace WinUI2Template
             // just ensure that the window is active
             if (rootFrame == null)
             {
+                AppStartup();
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
 
@@ -73,6 +88,45 @@ namespace WinUI2Template
             }
         }
 
+       
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                AppStartup();
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+
+                _serviceProvider = ConfigureServices();
+            }
+
+
+            if (rootFrame.Content == null)
+            {
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+                rootFrame.Navigate(typeof(MainPage), args);
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
+        }
+
+        private void AppStartup()
+        {
+            
+        }
+
+
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
@@ -95,6 +149,17 @@ namespace WinUI2Template
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        /// <summary>
+        /// Configures a new <see cref="IServiceProvider"/> instance with the required services.
+        /// </summary>
+        private static IServiceProvider ConfigureServices()
+        {
+            return new ServiceCollection()
+                .AddTransient<INavigationService, NavigationService>()
+                .AddSingleton<MainViewModel>()
+                .BuildServiceProvider();
         }
     }
 }
