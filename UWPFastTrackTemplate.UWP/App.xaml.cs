@@ -10,18 +10,12 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WinUI2Template.Model;
 
-namespace $safeprojectname$
+namespace UWPFastTrackTemplate.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -38,6 +32,25 @@ namespace $safeprojectname$
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
+
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
+        /// </summary>
+        public static IServiceProvider Services
+        {
+            get
+            {
+                IServiceProvider serviceProvider = ((App)Current)._serviceProvider;
+
+                if (serviceProvider is null)
+                {
+                    throw new InvalidOperationException("The service provider is not initialized");
+                }
+
+                return serviceProvider;
+            }
+        }
+
 
         /// <summary>
         /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
@@ -155,6 +168,44 @@ namespace $safeprojectname$
         {
 
 
+        }
+
+       
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                AppStartup();
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+
+                _serviceProvider = ConfigureServices();
+            }
+
+
+            if (rootFrame.Content == null)
+            {
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+                rootFrame.Navigate(typeof(MainPage), args);
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
+        }
+
+        private void AppStartup()
+        {
+            
         }
 
 
