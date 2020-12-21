@@ -32,7 +32,6 @@ namespace UWPFastTrackTemplate.UWP.Services
             
         }
 
-
         public void LoadFrame(Frame frame)
         {
             // Unregister old frame events then register

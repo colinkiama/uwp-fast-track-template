@@ -2,7 +2,7 @@
 using System;
 using UWPFastTrackTemplate.Services;
 using UWPFastTrackTemplate.UWP.Services;
-using UWPFastTrackTemplate.View.UWP;
+using UWPFastTrackTemplate.UWP.View;
 using UWPFastTrackTemplate.ViewModel;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -168,10 +168,16 @@ namespace UWPFastTrackTemplate.UWP
                 .AddSingleton<INavigationService, NavigationService>((e) =>
                 {
                     var navService = new NavigationService(rootFrame);
-                    navService.RegisterForNavigation<MainView, MainViewModel>();
+                    navService.RegisterForNavigation<MainView, MainViewModel>()
+                    .RegisterForNavigation<HomeView, HomeViewModel>()
+                    .RegisterForNavigation<Page1, Page1ViewModel>()
+                    .RegisterForNavigation<SettingsView, SettingsViewModel>();
                     return navService;
                 })
                 .AddSingleton<MainViewModel>()
+                .AddSingleton<HomeViewModel>()
+                .AddSingleton<Page1ViewModel>()
+                .AddSingleton<SettingsViewModel>()
                 .BuildServiceProvider();
         }
 
