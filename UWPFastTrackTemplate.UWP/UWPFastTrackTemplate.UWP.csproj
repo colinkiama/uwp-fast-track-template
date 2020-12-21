@@ -119,6 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\NavHelper.cs" />
+    <Compile Include="Helpers\StringToSymbolHelper.cs" />
+    <Compile Include="Model\NavigationInfo.cs" />
     <Compile Include="View\HomeView.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>

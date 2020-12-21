@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UWPFastTrackTemplate.Model;
 using UWPFastTrackTemplate.Services;
 
 namespace UWPFastTrackTemplate.ViewModel
@@ -20,22 +21,45 @@ namespace UWPFastTrackTemplate.ViewModel
         }
 
 
-        private string _currentTag;
+        private string _currentViewHeader;
 
-        public string CurrentTag
+        public string CurrentViewHeader
         {
-            get { return _currentTag; }
+            get { return _currentViewHeader; }
             set
             {
-                _currentTag = value;
+                _currentViewHeader = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private MenuElement _selectedItem;
+
+        public MenuElement SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
                 NotifyPropertyChanged();
             }
         }
 
 
+        public List<MenuElement> MenuElements { get; set; }
+
+        public MenuElement SettingsElement = new MenuElement { Title = "Title", Icon = "Settings", Tag = "settings" };
+
         public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
+            MenuElements = new List<MenuElement>() {
+            new MenuElement { Title = "Home", Icon="Home", Tag="home"},
+            new MenuElement { Title = "Page 1", Icon="Page", Tag="page1"}
+            };
+
             ViewModelName = "MainViewModel";
+            CurrentViewHeader = "Home";
+            SelectedItem = MenuElements.First();
         }
 
         // List of ValueTuple holding the Navigation Tag and the relative ViewModel
@@ -46,7 +70,7 @@ namespace UWPFastTrackTemplate.ViewModel
             ("settings", typeof(SettingsViewModel))
         };
 
-        public void HandleNavTag(string tag)
+        public void HandleNavTag(string tag, object parameter)
         {
             Type viewModel = null;
 
@@ -59,10 +83,18 @@ namespace UWPFastTrackTemplate.ViewModel
 
             if (viewModel != null)
             {
-                bool navigated = _navigationService.Navigate(viewModel);
+                bool navigated = _navigationService.Navigate(viewModel, parameter);
                 if (navigated)
                 {
-                    CurrentTag = tag;
+                    if (tag == "settings")
+                    {
+                        SelectedItem = SettingsElement;
+                    }
+                    else
+                    {
+                        SelectedItem = MenuElements.Where(x => x.Tag == tag).First();
+
+                    }
                 }
             }
         }
@@ -71,5 +103,7 @@ namespace UWPFastTrackTemplate.ViewModel
         {
             _navigationService.Navigate<HomeViewModel>();
         }
+
+
     }
 }
