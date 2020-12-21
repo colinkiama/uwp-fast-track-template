@@ -12,6 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using WinUI2Template.Model;
 using muxc = Microsoft.UI.Xaml.Controls;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -43,7 +44,6 @@ namespace UWPFastTrackTemplate.UWP.View
             ContentFrame.Navigated += On_Navigated;
 
             // NavView doesn't load any page by default, so load home page.
-            NavView.SelectedItem = NavView.MenuItems[0];
             // If navigation occurs on SelectionChanged, this isn't needed.
             // Because we use ItemInvoked to navigate, we need to call Navigate
             // here to load the home page.
@@ -74,6 +74,7 @@ namespace UWPFastTrackTemplate.UWP.View
                                          muxc.NavigationViewItemInvokedEventArgs args)
         {
             string tag = "";
+            
             if (args.IsSettingsInvoked == true)
             {
                 tag = "settings";
@@ -82,7 +83,7 @@ namespace UWPFastTrackTemplate.UWP.View
             {
                 tag = args.InvokedItemContainer.Tag.ToString();
             }
-            ViewModel.HandleNavTag(tag);
+            ViewModel.HandleNavTag(tag, new NavigationInfo(null, args.RecommendedNavigationTransitionInfo));
         }
 
 
@@ -117,23 +118,6 @@ namespace UWPFastTrackTemplate.UWP.View
         private void On_Navigated(object sender, NavigationEventArgs e)
         {
             NavView.IsBackEnabled = ContentFrame.CanGoBack;
-
-            if (ContentFrame.SourcePageType == typeof(SettingsView))
-            {
-                // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
-                NavView.SelectedItem = (muxc.NavigationViewItem)NavView.SettingsItem;
-                NavView.Header = "Settings";
-            }
-            //else if (ContentFrame.SourcePageType != null)
-            //{
-
-            //    NavView.SelectedItem = NavView.MenuItems
-            //        .OfType<muxc.NavigationViewItem>()
-            //        .First(n => n.Tag.Equals(ViewModel.CurrentTag));
-
-            //    NavView.Header =
-            //        ((muxc.NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
-            //}
         }
 
         private void ContentFrame_Loaded(object sender, RoutedEventArgs e)

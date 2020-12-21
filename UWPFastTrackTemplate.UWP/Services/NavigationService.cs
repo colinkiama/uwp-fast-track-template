@@ -8,6 +8,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using WinUI2Template.Model;
 
 namespace UWPFastTrackTemplate.UWP.Services
 {
@@ -125,34 +126,15 @@ namespace UWPFastTrackTemplate.UWP.Services
         public bool Navigate<TViewModel>(object parameter)
         {
             Type sourcePageType = ViewModelToViewMap[typeof(TViewModel)];
-            return _frame.Navigate(sourcePageType, parameter, new EntranceNavigationTransitionInfo());
-        }
-
-        public bool Navigate<TViewModel>(object parameter, NavigationTransitionInfo infoOverride)
-        {
-            Type sourcePageType = ViewModelToViewMap[typeof(TViewModel)];
-            return _frame.Navigate(sourcePageType, parameter, infoOverride);
-        }
-
-
-
-
-        public bool IsCurrentPageOfType(Type typeQuery)
-        {
-            return _frame.SourcePageType.Equals(typeQuery);
-        }
-
-        public bool GoBack()
-        {
-            bool canGoBack = false;
-            if (_frame.CanGoBack)
+            var navigationInfo = (NavigationInfo)parameter;
+            if (navigationInfo.TransitionInfo == null)
             {
-                canGoBack = true;
-                _frame.GoBack();
+                return _frame.Navigate(sourcePageType, navigationInfo.Parameter);
             }
-
-            return canGoBack;
+            return _frame.Navigate(sourcePageType, navigationInfo.Parameter, navigationInfo.TransitionInfo);
         }
+
+
 
         public bool Navigate(Type viewModel)
         {
@@ -181,13 +163,34 @@ namespace UWPFastTrackTemplate.UWP.Services
         public bool Navigate(Type viewModel, object parameter)
         {
             Type sourcePageType = ViewModelToViewMap[viewModel];
-            return _frame.Navigate(sourcePageType, parameter, new EntranceNavigationTransitionInfo());
+            var navigationInfo = (NavigationInfo)parameter;
+            if (navigationInfo.TransitionInfo == null)
+            {
+                return _frame.Navigate(sourcePageType, navigationInfo.Parameter);
+            }
+            return _frame.Navigate(sourcePageType, navigationInfo.Parameter, navigationInfo.TransitionInfo);
         }
 
-        public bool Navigate(Type viewModel, object parameter, NavigationTransitionInfo infoOverride)
+
+        public bool IsCurrentPageOfType(Type typeQuery)
         {
-            Type sourcePageType = ViewModelToViewMap[viewModel];
-            return _frame.Navigate(sourcePageType, parameter, infoOverride);
+            return _frame.SourcePageType.Equals(typeQuery);
         }
+
+        public bool GoBack()
+        {
+            bool canGoBack = false;
+            if (_frame.CanGoBack)
+            {
+                canGoBack = true;
+                _frame.GoBack();
+            }
+
+            return canGoBack;
+        }
+
+
+
+
     }
 }

@@ -9,6 +9,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using WinUI2Template.Model;
 
 namespace UWPFastTrackTemplate.UWP
 {
@@ -86,7 +87,7 @@ namespace UWPFastTrackTemplate.UWP
                     // configuring the new page by passing required information as a navigation
                     // parameter
                     var navService = Services.GetRequiredService<INavigationService>();
-                    navService.Navigate<MainViewModel>(e.Arguments);
+                    navService.Navigate<MainViewModel>(new NavigationInfo(e.Arguments, null));
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
@@ -121,7 +122,7 @@ namespace UWPFastTrackTemplate.UWP
                 // configuring the new page by passing required information as a navigation
                 // parameter
                 var navService = Services.GetRequiredService<NavigationService>();
-                navService.Navigate<MainViewModel>(args);
+                navService.Navigate<MainViewModel>(new NavigationInfo(args, null));
             }
             // Ensure the current window is active
             Window.Current.Activate();
