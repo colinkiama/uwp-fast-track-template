@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-namespace WinUI2Template.Services
+namespace UWPFastTrackTemplate.UWP.Services
 {
     public class NavigationService : INavigationService
     {

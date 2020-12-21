@@ -2,7 +2,7 @@
 
 namespace UWPFastTrackTemplate.ViewModel
 {
-    class MainViewModel : NavigatableViewModelBase
+    public class MainViewModel : NavigatableViewModelBase
     {
         private string _viewModelName;
 
