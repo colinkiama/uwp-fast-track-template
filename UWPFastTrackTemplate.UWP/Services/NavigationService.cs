@@ -127,11 +127,14 @@ namespace UWPFastTrackTemplate.UWP.Services
         {
             Type sourcePageType = ViewModelToViewMap[typeof(TViewModel)];
             var navigationInfo = (NavigationInfo)parameter;
-            if (navigationInfo.TransitionInfo == null)
+            if (navigationInfo.TransitionInfo != null)
+            {
+                return _frame.Navigate(sourcePageType, navigationInfo.Parameter, navigationInfo.TransitionInfo);
+            }
+            else
             {
                 return _frame.Navigate(sourcePageType, navigationInfo.Parameter);
             }
-            return _frame.Navigate(sourcePageType, navigationInfo.Parameter, navigationInfo.TransitionInfo);
         }
 
 
@@ -164,11 +167,14 @@ namespace UWPFastTrackTemplate.UWP.Services
         {
             Type sourcePageType = ViewModelToViewMap[viewModel];
             var navigationInfo = (NavigationInfo)parameter;
-            if (navigationInfo.TransitionInfo == null)
+            if (navigationInfo.TransitionInfo != null)
+            {
+                return _frame.Navigate(sourcePageType, navigationInfo.Parameter, navigationInfo.TransitionInfo);
+            }
+            else
             {
                 return _frame.Navigate(sourcePageType, navigationInfo.Parameter);
             }
-            return _frame.Navigate(sourcePageType, navigationInfo.Parameter, navigationInfo.TransitionInfo);
         }
 
 
