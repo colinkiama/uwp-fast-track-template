@@ -18,6 +18,7 @@ namespace UWPFastTrackTemplate.ViewModel
 
         public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
+            ViewModelName = "MainViewModel";
         }
 
 
