@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="UWPFastTrackTemplate.UWP.MainPage"
+    x:Class="UWPFastTrackTemplate.View.UWP.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWPFastTrackTemplate.UWP"

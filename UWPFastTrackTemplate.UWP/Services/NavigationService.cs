@@ -6,6 +6,7 @@ using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
@@ -19,7 +20,7 @@ namespace UWPFastTrackTemplate.UWP.Services
         public event NavigationFailedEventHandler NavigationFailed;
         public event NavigationStoppedEventHandler NavigationStopped;
 
-        public IDictionary<Type, Type> ViewModelToPageMap { get; } = new Dictionary<Type, Type>();
+        public IDictionary<Type, Type> ViewModelToViewMap { get; } = new Dictionary<Type, Type>();
 
         public NavigationService(Frame navigationFrame)
         {
@@ -27,6 +28,8 @@ namespace UWPFastTrackTemplate.UWP.Services
             _frame.Navigated += _frame_Navigated;
             _frame.PointerPressed += NavigationFrame_PointerPressed;
             SystemNavigationManager.GetForCurrentView().BackRequested += NavService_BackRequested;
+            // TODO: Handle "Alt + Left" Back Navigation
+            
         }
 
 
@@ -90,9 +93,9 @@ namespace UWPFastTrackTemplate.UWP.Services
             return GoBack();
         }
 
-        public NavigationService RegisterForNavigation<TPage, TViewModel>() where TPage : Page
+        public NavigationService RegisterForNavigation<TView, TViewModel>() where TView : Page
         {
-            ViewModelToPageMap[typeof(TViewModel)] = typeof(TPage);
+            ViewModelToViewMap[typeof(TViewModel)] = typeof(TView);
             return this;
         }
 
@@ -102,7 +105,7 @@ namespace UWPFastTrackTemplate.UWP.Services
             // Try to see if you can navigate to a frame
             // by going forward first (Saving memory and time)
 
-            Type sourcePageType = ViewModelToPageMap[typeof(TViewModel)];
+            Type sourcePageType = ViewModelToViewMap[typeof(TViewModel)];
             bool didNavigate = false;
             if (_frame.CanGoForward)
             {
@@ -123,13 +126,13 @@ namespace UWPFastTrackTemplate.UWP.Services
 
         public bool Navigate<TViewModel>(object parameter)
         {
-            Type sourcePageType = ViewModelToPageMap[typeof(TViewModel)];
-            return _frame.Navigate(sourcePageType, parameter);
+            Type sourcePageType = ViewModelToViewMap[typeof(TViewModel)];
+            return _frame.Navigate(sourcePageType, parameter, new EntranceNavigationTransitionInfo());
         }
 
         public bool Navigate<TViewModel>(object parameter, NavigationTransitionInfo infoOverride)
         {
-            Type sourcePageType = ViewModelToPageMap[typeof(TViewModel)];
+            Type sourcePageType = ViewModelToViewMap[typeof(TViewModel)];
             return _frame.Navigate(sourcePageType, parameter, infoOverride);
         }
 
