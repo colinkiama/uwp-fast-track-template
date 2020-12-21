@@ -4,7 +4,9 @@ using System.Text;
 
 namespace UWPFastTrackTemplate.Services
 {
-    interface INavigationService
+    public interface INavigationService
     {
+        bool Navigate<TViewModel>();
+        bool GoBack();
     }
 }

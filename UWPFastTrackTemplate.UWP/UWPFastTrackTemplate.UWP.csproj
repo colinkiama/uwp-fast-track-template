@@ -129,6 +129,7 @@
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\NavigationService.cs" />
     <Compile Include="SettingsPage.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
