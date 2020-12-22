@@ -5,6 +5,7 @@
     xmlns:local="using:UWPFastTrackTemplate.UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wctcontrols="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -16,10 +17,16 @@
             </Style>
         </Grid.Resources>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Source="ms-appx:///Assets/WinUILogo.png"
+
+            <wctcontrols:DropShadowPanel HorizontalAlignment="Center"
+                                         Visibility="Visible"
+                                         VerticalContentAlignment="Stretch"
+                                         HorizontalContentAlignment="Stretch">
+                <Image Source="ms-appx:///Assets/WinUILogo.png"
                    Width="200"
                    Height="200"
                    />
+            </wctcontrols:DropShadowPanel>
             <TextBlock x:Uid="HomeViewHeader" FontWeight="Bold"/>
             <TextBlock x:Uid="ViewSubHeader" FontSize="20" Margin="0,20,0,0" TextWrapping="WrapWholeWords"/>
             <TextBlock FontWeight="SemiBold" FontSize="20" TextWrapping="WrapWholeWords">HomeView.xaml</TextBlock>
