@@ -7,6 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wctcontrols="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"  
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -22,18 +24,20 @@
             <wctcontrols:DropShadowPanel HorizontalAlignment="Center"
                                          Visibility="Visible"
                                          VerticalContentAlignment="Stretch"
-                                         HorizontalContentAlignment="Stretch">
+                                         HorizontalContentAlignment="Stretch"
+                                         x:Name="LogoDropShadowPanel"
+                                         Loaded="LogoDropShadowPanel_Loaded">
                 <animations:Implicit.ShowAnimations>
                     <animations:TranslationAnimation Duration="0:0:1" From="-500,0,0" To="0,0,0"></animations:TranslationAnimation>
                     <animations:OpacityAnimation Duration="0:0:1" From="0.0" To="1.0"></animations:OpacityAnimation>
                 </animations:Implicit.ShowAnimations>
-
+               
                 <Image Source="ms-appx:///Assets/WinUILogo.png"
                    Width="200"
                    Height="200">
                 </Image>
             </wctcontrols:DropShadowPanel>
-            
+
             <TextBlock x:Uid="HomeViewHeader" FontWeight="Bold"/>
             <TextBlock x:Uid="ViewSubHeader" FontSize="20" Margin="0,20,0,0" TextWrapping="WrapWholeWords"/>
             <TextBlock FontWeight="SemiBold" FontSize="20" TextWrapping="WrapWholeWords">HomeView.xaml</TextBlock>
