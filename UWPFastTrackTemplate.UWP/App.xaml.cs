@@ -55,6 +55,8 @@ namespace UWPFastTrackTemplate.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            // CoreApplication.EnablePrelaunch was introduced in Windows 10 version 1607
+            bool canEnablePrelaunch = Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.ApplicationModel.Core.CoreApplication", "EnablePrelaunch");
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -81,22 +83,28 @@ namespace UWPFastTrackTemplate.UWP
 
             if (e.PrelaunchActivated == false)
             {
-                if (rootFrame.Content == null)
+                if (canEnablePrelaunch)
                 {
-                    // When the navigation stack isn't restored navigate to the first page,
-                    // configuring the new page by passing required information as a navigation
-                    // parameter
-                    var navService = Services.GetRequiredService<INavigationService>();
-                    navService.Navigate<MainViewModel>(new NavigationInfo(e.Arguments, null));
+                    TryEnablePrelaunch();
                 }
-                // Ensure the current window is active
-                Window.Current.Activate();
             }
+
+            if (rootFrame.Content == null)
+            {
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+                var navService = Services.GetRequiredService<INavigationService>();
+                navService.Navigate<MainViewModel>(new NavigationInfo(e.Arguments, null));
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
         }
 
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -128,9 +136,14 @@ namespace UWPFastTrackTemplate.UWP
             Window.Current.Activate();
         }
 
-       
+        private void TryEnablePrelaunch()
+        {
+            Windows.ApplicationModel.Core.CoreApplication.EnablePrelaunch(true);
+        }
+
         private void AppStartup()
         {
+
 
         }
 
