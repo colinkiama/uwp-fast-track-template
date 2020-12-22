@@ -38,7 +38,6 @@ namespace UWPFastTrackTemplate.UWP.View
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
             // Add handler for ContentFrame navigation.
