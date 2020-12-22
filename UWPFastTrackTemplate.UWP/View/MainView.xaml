@@ -37,8 +37,7 @@
                 <!-- See AutoSuggestBox documentation for
                  more info about how to implement search: 
                 https://docs.microsoft.com/en-us/windows/uwp/design/controls-and-patterns/auto-suggest-box -->
-                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"
-                                PlaceholderText="{x:Bind ViewModel.ViewModelName, Mode=OneWay}"/>
+                <AutoSuggestBox x:Name="NavViewSearchBox" x:Uid="NavSearchBox" QueryIcon="Find"/>
             </muxc:NavigationView.AutoSuggestBox>
             <ScrollViewer>
                 <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
