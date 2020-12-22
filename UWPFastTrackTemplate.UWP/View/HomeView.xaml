@@ -21,7 +21,7 @@
                    Height="200"
                    />
             <TextBlock Text="Welcome to WinUI 2!" />
-            <TextBlock>You can edit this text in <Bold>HomePage.xaml</Bold></TextBlock>
+            <TextBlock>You can edit this page in <Bold>HomePage.xaml</Bold></TextBlock>
             <HyperlinkButton Content="Find out more about WinUI here" HorizontalAlignment="Center" 
                              NavigateUri="https://docs.microsoft.com/en-us/windows/apps/winui/winui2/"
                              />

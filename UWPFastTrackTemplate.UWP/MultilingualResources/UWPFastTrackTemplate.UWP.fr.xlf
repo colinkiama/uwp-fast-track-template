@@ -6,11 +6,6 @@
     </header>
     <body>
       <group id="UWPFASTTRACKTEMPLATE.UWP/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
-        <trans-unit id="Greeting.Text" translate="yes" xml:space="preserve">
-          <source>Hello</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Bonjour</target>
-          <note from="MultilingualBuild" annotates="source" priority="2">oof</note>
-        </trans-unit>
         <trans-unit id="NavSearchBox.PlaceholderText" translate="yes" xml:space="preserve">
           <source>Search</source>
           <target state="new">Search</target>

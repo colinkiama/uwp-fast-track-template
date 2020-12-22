@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EmojiDebugSystem;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -42,7 +43,7 @@ namespace UWPFastTrackTemplate.UWP.View
         {
             // Add handler for ContentFrame navigation.
             ContentFrame.Navigated += On_Navigated;
-
+            EmojiDebug.WriteLine(DebugEmoji.Celebrate, "NavigationView Loaded (Emoji Debug Test)");
             // NavView doesn't load any page by default, so load home page.
             // If navigation occurs on SelectionChanged, this isn't needed.
             // Because we use ItemInvoked to navigate, we need to call Navigate
