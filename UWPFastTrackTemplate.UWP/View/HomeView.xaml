@@ -25,6 +25,7 @@
             <HyperlinkButton Content="Find out more about WinUI here" HorizontalAlignment="Center" 
                              NavigateUri="https://docs.microsoft.com/en-us/windows/apps/winui/winui2/"
                              />
+            <TextBlock x:Uid="Greeting" />
         </StackPanel>
     </Grid>
 </Page>

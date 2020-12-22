@@ -1,26 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Resources;
 using UWPFastTrackTemplate.Model;
 using UWPFastTrackTemplate.Services;
 
 namespace UWPFastTrackTemplate.ViewModel
 {
+
     public class MainViewModel : NavigatableViewModelBase
     {
-        private string _viewModelName;
-
-        public string ViewModelName
-        {
-            get { return _viewModelName; }
-            set
-            {
-                _viewModelName = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-
+        
         private string _currentViewHeader;
 
         public string CurrentViewHeader
@@ -48,17 +39,20 @@ namespace UWPFastTrackTemplate.ViewModel
 
         public List<MenuElement> MenuElements { get; set; }
 
-        public MenuElement SettingsElement = new MenuElement { Title = "Settings", Icon = "Settings", Tag = "settings" };
+        public MenuElement SettingsElement { get; set; }
 
         public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
+            ResourceManager rm = Strings.Resources.ResourceManager;
+
             MenuElements = new List<MenuElement>() {
-            new MenuElement { Title = "Home", Icon="Home", Tag="home"},
-            new MenuElement { Title = "Page 1", Icon="Page", Tag="page1"}
+            new MenuElement { Title = rm.GetString("HomeTitle"), Icon="Home", Tag="home"},
+            new MenuElement { Title = rm.GetString("Page1Title"), Icon="Page", Tag="page1"}
             };
 
-            ViewModelName = "MainViewModel";
-            CurrentViewHeader = "Home";
+
+            SettingsElement = new MenuElement { Title = rm.GetString("SettingsTitle"), Icon = "Settings", Tag = "settings" };
+            CurrentViewHeader = rm.GetString("HomeTitle");
             SelectedItem = MenuElements.First();
         }
 
