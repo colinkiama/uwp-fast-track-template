@@ -16,8 +16,9 @@
             </Style>        
         </Grid.Resources>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Settings Page" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock TextAlignment="Center">You can edit this text in <Bold>SettingsPage.xaml</Bold></TextBlock>
+            <TextBlock x:Uid="SettingsViewHeader" FontWeight="Bold" />
+            <TextBlock x:Uid="ViewSubHeader" FontSize="20" Margin="0,20,0,0"/>
+            <TextBlock FontWeight="SemiBold" FontSize="20">SettingsView.xaml</TextBlock>
         </StackPanel>
     </Grid>
 </Page>

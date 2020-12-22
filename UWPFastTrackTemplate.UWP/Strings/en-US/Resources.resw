@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="HomeViewHeader.Text" xml:space="preserve">
+    <value>This App uses the WinUI 2 and the Windows Community Toolkit!</value>
+  </data>
+  <data name="Page1ViewHeader.Text" xml:space="preserve">
+    <value>Page 1</value>
+  </data>
+  <data name="SettingsViewHeader.Text" xml:space="preserve">
+    <value>Settings View</value>
+  </data>
+  <data name="ViewSubHeader.Text" xml:space="preserve">
+    <value>You can edit this page in the following file:</value>
+  </data>
+  <data name="WCTLink.Content" xml:space="preserve">
+    <value>Find out more about the Windows Community Toolkit</value>
+  </data>
+  <data name="WinUILink.Content" xml:space="preserve">
+    <value>Find out more about WinUI</value>
+  </data>
   <data name="NavSearchBox.PlaceholderText" xml:space="preserve">
     <value>Search</value>
   </data>

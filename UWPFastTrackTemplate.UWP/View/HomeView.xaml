@@ -20,12 +20,15 @@
                    Width="200"
                    Height="200"
                    />
-            <TextBlock Text="Welcome to WinUI 2!" />
-            <TextBlock>You can edit this page in <Bold>HomePage.xaml</Bold></TextBlock>
-            <HyperlinkButton Content="Find out more about WinUI here" HorizontalAlignment="Center" 
+            <TextBlock x:Uid="HomeViewHeader" FontWeight="Bold"/>
+            <TextBlock x:Uid="ViewSubHeader" FontSize="20" Margin="0,20,0,0" TextWrapping="WrapWholeWords"/>
+            <TextBlock FontWeight="SemiBold" FontSize="20" TextWrapping="WrapWholeWords">HomeView.xaml</TextBlock>
+            <HyperlinkButton x:Uid="WinUILink" HorizontalAlignment="Center" 
                              NavigateUri="https://docs.microsoft.com/en-us/windows/apps/winui/winui2/"
+                             Margin="0,12,0,0"/>
+            <HyperlinkButton x:Uid="WCTLink" HorizontalAlignment="Center" 
+                             NavigateUri="https://docs.microsoft.com/en-us/windows/communitytoolkit/"
                              />
-            <TextBlock x:Uid="Greeting" />
         </StackPanel>
     </Grid>
 </Page>
