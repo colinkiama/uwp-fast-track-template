@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using UWPFastTrackTemplate.Services;
-using UWPFastTrackTemplate.UWP;
-using UWPFastTrackTemplate.UWP.Services;
-using UWPFastTrackTemplate.ViewModel;
+using $ext_safeprojectname$.Services;
+using $ext_safeprojectname$.UWP;
+using $ext_safeprojectname$.UWP.Services;
+using $ext_safeprojectname$.ViewModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -17,7 +17,7 @@ using WinUI2Template.Model;
 using muxc = Microsoft.UI.Xaml.Controls;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace UWPFastTrackTemplate.UWP.View
+namespace $ext_safeprojectname$.UWP.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

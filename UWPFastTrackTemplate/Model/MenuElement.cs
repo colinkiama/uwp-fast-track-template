@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace $safeprojectname$.Model
+namespace $ext_safeprojectname$.Model
 {
     public class MenuElement
     {

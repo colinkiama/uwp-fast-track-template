@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace $safeprojectname$.ViewModel
+namespace $ext_safeprojectname$.ViewModel
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

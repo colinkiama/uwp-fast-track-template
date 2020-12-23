@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using UWPFastTrackTemplate.Services;
-using UWPFastTrackTemplate.UWP.Services;
-using UWPFastTrackTemplate.UWP.View;
-using UWPFastTrackTemplate.ViewModel;
+using $ext_safeprojectname$.Services;
+using $ext_safeprojectname$.UWP.Services;
+using $ext_safeprojectname$.UWP.View;
+using $ext_safeprojectname$.ViewModel;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using WinUI2Template.Model;
 
-namespace UWPFastTrackTemplate.UWP
+namespace $ext_safeprojectname$.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

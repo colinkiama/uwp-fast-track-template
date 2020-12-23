@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using $safeprojectname$.Services;
+using $ext_safeprojectname$.Services;
 
-namespace $safeprojectname$.ViewModel
+namespace $ext_safeprojectname$.ViewModel
 {
     public class HomeViewModel : NavigatableViewModelBase
     {
