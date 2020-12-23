@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Resources;
-using $safeprojectname$.Model;
-using $safeprojectname$.Services;
+using $ext_safeprojectname$.Model;
+using $ext_safeprojectname$.Services;
 
-namespace $safeprojectname$.ViewModel
+namespace $ext_safeprojectname$.ViewModel
 {
 
     public class MainViewModel : NavigatableViewModelBase

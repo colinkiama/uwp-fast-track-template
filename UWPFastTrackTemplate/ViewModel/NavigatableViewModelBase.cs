@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using $safeprojectname$.Services;
+using $ext_safeprojectname$.Services;
 
-namespace $safeprojectname$.ViewModel
+namespace $ext_safeprojectname$.ViewModel
 {
     public abstract class NavigatableViewModelBase : ViewModelBase
     {
