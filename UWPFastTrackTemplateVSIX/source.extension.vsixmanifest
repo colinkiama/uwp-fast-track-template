@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="UWP Fast Track Template" Version="1.0" Language="en-US" Publisher="Colin Kiama" />
         <DisplayName>UWP Fast Track Template</DisplayName>
-        <Description xml:space="preserve">A UWP temlpate that lets you start making high-quality apps quickly.</Description>
+        <Description xml:space="preserve">A UWP template that lets you start making high-quality apps quickly.</Description>
         <MoreInfo>https://www.github.com/colinkiama/uwp-fast-track-template</MoreInfo>
         <Tags>csharp, uwp, winui, xaml, windows, template, toolkit, community, fast, track, windows</Tags>
     </Metadata>
