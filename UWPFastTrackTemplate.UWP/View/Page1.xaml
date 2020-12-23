@@ -1,15 +1,8 @@
 ﻿<Page
-<<<<<<< HEAD:UWPFastTrackTemplate.UWP/Page1.xaml
-    x:Class="UWPFastTrackTemplate.UWP.Page1"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UWPFastTrackTemplate.UWP"
-=======
     x:Class="$ext_safeprojectname$.UWP.View.Page1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:$ext_safeprojectname$.UWP"
->>>>>>> 481833a80f2386ad4ecfc48eb1dbb794264d626c:UWPFastTrackTemplate.UWP/View/Page1.xaml
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"

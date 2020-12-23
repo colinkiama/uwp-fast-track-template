@@ -17,11 +17,8 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-<<<<<<< HEAD:UWPFastTrackTemplate.UWP/HomePage.xaml.cs
-namespace UWPFastTrackTemplate.UWP
-=======
+
 namespace $ext_safeprojectname$.UWP.View
->>>>>>> 481833a80f2386ad4ecfc48eb1dbb794264d626c:UWPFastTrackTemplate.UWP/View/SettingsView.cs
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
