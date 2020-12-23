@@ -49,14 +49,14 @@
     <Compile Include="WinUI2TemplateVSIXPackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProjectTemplates\WinUI2Template.zip">
+    <Content Include="ProjectTemplates\UWPFastTrackTemplateFinal.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="WinUI2Template.zip">
+    <None Include="UWPFastTrackTemplateFinal.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
