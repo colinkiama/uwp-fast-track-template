@@ -27,11 +27,6 @@
                                          HorizontalContentAlignment="Stretch"
                                          x:Name="LogoDropShadowPanel"
                                          Loaded="LogoDropShadowPanel_Loaded">
-                <animations:Implicit.ShowAnimations>
-                    <animations:TranslationAnimation Duration="0:0:1" From="-500,0,0" To="0,0,0"></animations:TranslationAnimation>
-                    <animations:OpacityAnimation Duration="0:0:1" From="0.0" To="1.0"></animations:OpacityAnimation>
-                </animations:Implicit.ShowAnimations>
-               
                 <Image Source="ms-appx:///Assets/WinUILogo.png"
                    Width="200"
                    Height="200">

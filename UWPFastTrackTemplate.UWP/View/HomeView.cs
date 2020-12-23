@@ -33,6 +33,9 @@ namespace UWPFastTrackTemplate.UWP.View
 
         private async Task SetupRotateAnimationAsync()
         {
+            Vector3 centerPoint = new Vector3((float)(LogoDropShadowPanel.ActualWidth * 0.5),
+                (float)(LogoDropShadowPanel.ActualHeight * 0.5), 0);
+
             // Don't start animating until inital slide animation has ended
             await Task.Delay(1000);
 
