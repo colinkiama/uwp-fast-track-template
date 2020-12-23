@@ -3,9 +3,9 @@
     <Metadata>
         <Identity Id="UWP Fast Track Template" Version="1.0" Language="en-US" Publisher="Colin Kiama" />
         <DisplayName>UWP Fast Track Template</DisplayName>
-        <Description xml:space="preserve">A UWP project template that allows developers start making high-quality apps quickly</Description>
-        <MoreInfo>https://github.com/colinkiama/uwp-fast-track-template</MoreInfo>
-        <Tags>winui, winui2, uwp, template, csharp, fast, track, wct, windows, community, toolkit</Tags>
+        <Description xml:space="preserve">A UWP temlpate that lets you start making high-quality apps quickly.</Description>
+        <MoreInfo>https://www.github.com/colinkiama/uwp-fast-track-template</MoreInfo>
+        <Tags>csharp, uwp, winui, xaml, windows, template, toolkit, community, fast, track, windows</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />

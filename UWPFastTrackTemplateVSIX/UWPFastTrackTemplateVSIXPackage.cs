@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace WinUI2TemplateVSIX
+namespace UWPFastTrackTemplateVSIX
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,13 +24,13 @@ namespace WinUI2TemplateVSIX
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(WinUI2TemplateVSIXPackage.PackageGuidString)]
-    public sealed class WinUI2TemplateVSIXPackage : AsyncPackage
+    [Guid(UWPFastTrackTemplateVSIXPackage.PackageGuidString)]
+    public sealed class UWPFastTrackTemplateVSIXPackage : AsyncPackage
     {
         /// <summary>
-        /// WinUI2TemplateVSIXPackage GUID string.
+        /// UWPFastTrackTemplateVSIXPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "1c2287f1-7b23-4fdf-8e04-1fd7d701510e";
+        public const string PackageGuidString = "5724644c-900b-4950-8a44-2347b7b2e909";
 
         #region Package Members
 
