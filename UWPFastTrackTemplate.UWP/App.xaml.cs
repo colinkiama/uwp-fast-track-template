@@ -49,25 +49,6 @@ namespace $ext_safeprojectname$.UWP
 
 
         /// <summary>
-        /// Gets the <see cref="IServiceProvider"/> instance for the current application instance.
-        /// </summary>
-        public static IServiceProvider Services
-        {
-            get
-            {
-                IServiceProvider serviceProvider = ((App)Current)._serviceProvider;
-
-                if (serviceProvider is null)
-                {
-                    throw new InvalidOperationException("The service provider is not initialized");
-                }
-
-                return serviceProvider;
-            }
-        }
-
-
-        /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
@@ -163,44 +144,6 @@ namespace $ext_safeprojectname$.UWP
         private void AppStartup()
         {
 
-
-        }
-
-       
-        protected override void OnActivated(IActivatedEventArgs args)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
-            {
-                AppStartup();
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
-
-                _serviceProvider = ConfigureServices();
-            }
-
-
-            if (rootFrame.Content == null)
-            {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage), args);
-            }
-            // Ensure the current window is active
-            Window.Current.Activate();
-        }
-
-        private void AppStartup()
-        {
 
         }
 
