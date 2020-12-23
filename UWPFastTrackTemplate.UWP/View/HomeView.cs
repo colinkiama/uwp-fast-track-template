@@ -43,6 +43,7 @@ namespace UWPFastTrackTemplate.UWP.View
             
             // Ensures that visual rotates at a consistent rate.
             LinearEasingFunction easing = compositor.CreateLinearEasingFunction();
+
             animation.InsertKeyFrame(1f, 360f, easing);
             animation.Duration = TimeSpan.FromSeconds(5);
             animation.IterationBehavior = AnimationIterationBehavior.Forever;
