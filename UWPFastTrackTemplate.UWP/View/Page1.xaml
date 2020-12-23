@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="WinUI2Template.Page1"
+    x:Class="UWPFastTrackTemplate.UWP.View.Page1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUI2Template"
+    xmlns:local="using:UWPFastTrackTemplate.UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -17,8 +17,9 @@
 
         </Grid.Resources>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Page 1" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock TextAlignment="Center">You can edit this text in <Bold>Page1.xaml</Bold></TextBlock>
+            <TextBlock x:Uid="Page1ViewHeader" FontWeight="Bold" />
+            <TextBlock x:Uid="ViewSubHeader" FontSize="20" Margin="0,20,0,0"/>
+            <TextBlock FontWeight="SemiBold" FontSize="20">Page1View.xaml</TextBlock>
         </StackPanel>
     </Grid>
 </Page>
