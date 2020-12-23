@@ -1,5 +1,5 @@
 # UWP Fast Track Template
-A UWP temlpate that lets you start making high-quality apps quickly.
+A UWP template that lets you start making high-quality apps quickly.
 
 Available in Visual Studio Marketplace: https://marketplace.visualstudio.com/items?itemName=ColinKiama.winui-2-template
 
