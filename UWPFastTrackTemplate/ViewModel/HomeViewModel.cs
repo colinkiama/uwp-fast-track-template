@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using UWPFastTrackTemplate.Services;
+using $safeprojectname$.Services;
 
-namespace UWPFastTrackTemplate.ViewModel
+namespace $safeprojectname$.ViewModel
 {
     public class HomeViewModel : NavigatableViewModelBase
     {

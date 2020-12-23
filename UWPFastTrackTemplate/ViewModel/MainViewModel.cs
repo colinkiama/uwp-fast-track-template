@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Resources;
-using UWPFastTrackTemplate.Model;
-using UWPFastTrackTemplate.Services;
+using $safeprojectname$.Model;
+using $safeprojectname$.Services;
 
-namespace UWPFastTrackTemplate.ViewModel
+namespace $safeprojectname$.ViewModel
 {
 
     public class MainViewModel : NavigatableViewModelBase

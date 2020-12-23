@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace UWPFastTrackTemplate.ViewModel
+namespace $safeprojectname$.ViewModel
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
