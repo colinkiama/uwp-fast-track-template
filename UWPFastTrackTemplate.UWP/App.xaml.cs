@@ -143,17 +143,17 @@ namespace $ext_safeprojectname$.UWP
             }
 
 
-                if (rootFrame.Content == null)
-                {
-                    // When the navigation stack isn't restored navigate to the first page,
-                    // configuring the new page by passing required information as a navigation
-                    // parameter
+            if (rootFrame.Content == null)
+            {
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
                 var navService = Services.GetRequiredService<NavigationService>();
                 navService.Navigate<MainViewModel>(new NavigationInfo(args, null));
-                }
-                // Ensure the current window is active
-                Window.Current.Activate();
             }
+            // Ensure the current window is active
+            Window.Current.Activate();
+        }
 
         private void TryEnablePrelaunch()
         {
@@ -201,7 +201,7 @@ namespace $ext_safeprojectname$.UWP
 
         private void AppStartup()
         {
-            
+
         }
 
 

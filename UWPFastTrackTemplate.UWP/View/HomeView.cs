@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using System;
 using System.Numerics;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace $ext_safeprojectname$.UWP.View
             Compositor compositor = logoDropShadowVisual.Compositor;
 
             ScalarKeyFrameAnimation animation = compositor.CreateScalarKeyFrameAnimation();
-
+            
             // Ensures that visual rotates at a consistent rate.
             LinearEasingFunction easing = compositor.CreateLinearEasingFunction();
 
