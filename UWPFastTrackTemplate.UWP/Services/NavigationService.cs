@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using $safeprojectname$.Services;
+using $ext_safeprojectname$.Services;
 using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using WinUI2Template.Model;
 
-namespace $safeprojectname$.UWP.Services
+namespace $ext_safeprojectname$.UWP.Services
 {
     public class NavigationService : INavigationService
     {

@@ -31,7 +31,4 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MultilingualResources\" />
-  </ItemGroup>
 </Project>

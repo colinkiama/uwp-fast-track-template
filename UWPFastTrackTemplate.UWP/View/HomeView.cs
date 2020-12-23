@@ -3,7 +3,7 @@ using Microsoft.Toolkit.Uwp.UI.Animations;
 using System;
 using System.Numerics;
 using System.Threading.Tasks;
-using $safeprojectname$.ViewModel;
+using $ext_safeprojectname$.ViewModel;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Hosting;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace $safeprojectname$.UWP.View
+namespace $ext_safeprojectname$.UWP.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
