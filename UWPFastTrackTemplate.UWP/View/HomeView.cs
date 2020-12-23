@@ -33,9 +33,6 @@ namespace $ext_safeprojectname$.UWP.View
 
         private async Task SetupRotateAnimationAsync()
         {
-            // Don't start animating until inital slide animation has ended
-            await Task.Delay(1000);
-
             Visual logoDropShadowVisual = ElementCompositionPreview.GetElementVisual(LogoDropShadowPanel);
             Compositor compositor = logoDropShadowVisual.Compositor;
 
