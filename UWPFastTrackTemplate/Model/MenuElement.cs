@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UWPFastTrackTemplate.Model
+namespace $safeprojectname$.Model
 {
     public class MenuElement
     {

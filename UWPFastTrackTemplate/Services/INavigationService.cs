@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UWPFastTrackTemplate.Services
+namespace $safeprojectname$.Services
 {
     public interface INavigationService
     {
