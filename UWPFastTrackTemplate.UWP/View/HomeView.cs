@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Uwp.UI.Animations;
 using System;
 using System.Numerics;
 using System.Threading.Tasks;
@@ -26,24 +25,22 @@ namespace UWPFastTrackTemplate.UWP.View
 
         public HomeViewModel ViewModel => (HomeViewModel)this.DataContext;
 
-        private async void LogoDropShadowPanel_Loaded(object sender, RoutedEventArgs e)
+        private void LogoDropShadowPanel_Loaded(object sender, RoutedEventArgs e)
         {
-            await SetupRotateAnimationAsync();
+            SetupRotateAnimationAsync();
         }
 
-        private async Task SetupRotateAnimationAsync()
+        private void SetupRotateAnimationAsync()
         {
             Vector3 centerPoint = new Vector3((float)(LogoDropShadowPanel.ActualWidth * 0.5),
                 (float)(LogoDropShadowPanel.ActualHeight * 0.5), 0);
 
-            // Don't start animating until inital slide animation has ended
-            await Task.Delay(1000);
 
             Visual logoDropShadowVisual = ElementCompositionPreview.GetElementVisual(LogoDropShadowPanel);
             Compositor compositor = logoDropShadowVisual.Compositor;
 
             ScalarKeyFrameAnimation animation = compositor.CreateScalarKeyFrameAnimation();
-            
+
             // Ensures that visual rotates at a consistent rate.
             LinearEasingFunction easing = compositor.CreateLinearEasingFunction();
 
@@ -51,7 +48,7 @@ namespace UWPFastTrackTemplate.UWP.View
             animation.Duration = TimeSpan.FromSeconds(5);
             animation.IterationBehavior = AnimationIterationBehavior.Forever;
 
-            logoDropShadowVisual.CenterPoint = new Vector3(logoDropShadowVisual.Size * 0.5f, 0);
+            logoDropShadowVisual.CenterPoint = centerPoint;
             logoDropShadowVisual.StartAnimation("RotationAngleInDegrees", animation);
         }
     }
