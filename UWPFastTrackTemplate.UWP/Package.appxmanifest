@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="4a6c1294-82e2-49d7-b49c-c11bc66b7031" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>$ext_safeprojectname$.UWP</DisplayName>
+    <DisplayName>$ext_safeprojectname$</DisplayName>
     <PublisherDisplayName>colin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -32,10 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$ext_safeprojectname$.UWP.App">
       <uap:VisualElements
-        DisplayName="$projectname$"
+        DisplayName="$ext_projectname$"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="$projectname$"
+        Description="$ext_projectname$"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
