@@ -1,7 +1,7 @@
 # WinUI2Template
 A UWP project template that let's developers get started with WinUI 2 quickly!
 
-Available in Visual Studio Marketplace: https://marketplace.visualstudio.com/items?itemName=ColinKiama.winui-2-template
+Available in Visual Studio Marketplace: https://marketplace.visualstudio.com/items?itemName=ColinKiama.uwp-fast-track
 
 You can also select "Use this template" and rename namespaces and files yourself.
 
